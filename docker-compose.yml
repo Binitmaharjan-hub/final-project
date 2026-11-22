@@ -1,0 +1,17 @@
+services:
+  frontend:
+    build: frontend/.
+    ports:
+      - 8002:80
+  
+  backend:
+    build: backend/.
+    environment:
+      DATABASE_URL: postgresql://appuser:app%40password@host.docker.internal:5432/student_management
+      DATABASE_SSL: "false"
+      DB_POOL_MAX: "10"
+      DB_IDLE_TIMEOUT_MS: "30000"
+      DB_CONNECTION_TIMEOUT_MS: "5000"
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:8002}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
