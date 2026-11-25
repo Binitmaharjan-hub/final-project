@@ -19,11 +19,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: backend/package-lock.json
+          cache: npm 
+          cache-dependency-path: backend/package-lock.json 
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci 
+
+      - name: NPM audit
+        run: npm audit
+
+      - name: audit fix
+        run: npm audit --fix
 
       - name: Test
         run: npm test
@@ -50,4 +56,4 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/finalbackend:latest
             ${{ secrets.DOCKER_USERNAME }}/finalbackend:${{ github.sha }}
-            ${{ secrets.DOCKER_USERNAME }}/finalbackend:${{ github.run_number }}
+            ${{ secrets.DOCKER_USERNAME }}/finalbackend:v${{ github.run_number }}

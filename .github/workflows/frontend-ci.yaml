@@ -50,4 +50,4 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/finalproject:latest
             ${{ secrets.DOCKER_USERNAME }}/finalproject:${{ github.sha }}
-            ${{ secrets.DOCKER_USERNAME }}/finalproject:${{ github.run_number }}
+            ${{ secrets.DOCKER_USERNAME }}/finalproject:v${{ github.run_number }}
