@@ -25,6 +25,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: audit dependencies
+        run: npm audit
+
+      - name: audit fix
+        run: npm audit fix
+
       - name: Build
         run: npm run build
 
