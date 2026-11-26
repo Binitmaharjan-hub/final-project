@@ -32,7 +32,7 @@ app.use((_req, res) => res.status(404).json({ message: 'Route not found' }));
 
 app.use((error, _req, res, _next) => {
   if (error instanceof z.ZodError) {
-    return res.status(400).json({ message: 'Validation failed', errors: error.errors });
+    return res.status(400).json({ message: 'Validation failed', errors: error.issues });
   }
   if (error?.code === '23505') {
     return res.status(409).json({ message: 'A student with this email or student ID already exists' });

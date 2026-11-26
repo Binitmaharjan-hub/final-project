@@ -3,6 +3,8 @@ services:
     build: frontend/.
     ports:
       - 8002:80
+    depends_on:
+      - backend
   
   backend:
     build: backend/.
